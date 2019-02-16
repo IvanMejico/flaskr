@@ -34,7 +34,14 @@ def create_app(test_config=None):
     from flaskr import auth
     app.register_blueprint(auth.bp)
 
+    from flaskr import blog
+    app.register_blueprint(blog.bp)
+    
     # Was later added. Creates error if gone.
+    # it was supposed to be with the previous 
+    # line according to the tutorial but it was included
+    # before those lines were added because the program 
+    # outputs error without it.
     app.add_url_rule('/', endpoint='index')
 
     return app
