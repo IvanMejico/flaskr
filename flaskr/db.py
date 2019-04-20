@@ -5,6 +5,7 @@ from flask import current_app, g
 from flask.cli import with_appcontext
 
 def get_db():
+# ??What is the purpose of assigning the sqlite3 connection object to g.db??
     if 'db' not in g:
         g.db = sqlite3.connect(
             current_app.config['DATABASE'],
@@ -15,6 +16,7 @@ def get_db():
     return g.db
 
 def close_db(e=None):
+    # why removing the db attribute necessary before  close the connection?
     db = g.pop('db', None)
 
     if db is not None:
